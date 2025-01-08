@@ -36,6 +36,14 @@ type Mutation {
   deleteUser(
     id: ID!
   ): User @delete
+
+#Insert and update, insert if ID doesn't exist
+  upsertUser(
+    id: ID!
+    name: String!
+    email: String!
+    password: String!
+  ) User @upsert
 }
 
 "Account of a person who utilizes this application."
