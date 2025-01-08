@@ -3,6 +3,7 @@ scalar DateTime @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Date
 
 "Indicates what fields are available at the top level of a query operation."
 type Query {
+    user(id: ID!): User
     "Find a single user by an identifying attribute."
     user(
       "Search by primary key."
@@ -19,23 +20,26 @@ type Query {
     ): [User!]! @paginate(defaultCount: 10)
 }
 
+type Mutation {
+  createUser(
+    name: String!
+    email: String!
+    password: String!
+  ): User! @create
+
+  updateUser(
+    id: ID!
+    name: String
+    email: String
+  ): User! @update
+}
+
 "Account of a person who utilizes this application."
 type User {
-    "Unique primary key."
     id: ID!
-
-    "Non-unique name."
     name: String!
-
-    "Unique email address."
     email: String!
-
-    "When the email was verified."
     email_verified_at: DateTime
-
-    "When the account was created."
     created_at: DateTime!
-
-    "When the account was last updated."
     updated_at: DateTime!
 }
