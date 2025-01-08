@@ -32,6 +32,10 @@ type Mutation {
     name: String
     email: String
   ): User! @update
+
+  deleteUser(
+    id: ID!
+  ): User @delete
 }
 
 "Account of a person who utilizes this application."
