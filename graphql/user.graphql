@@ -30,6 +30,8 @@ type User {
     name: String
     email: String
     email_verified_at: String
+    created_at: String
+    updated_at: String
     posts: [Post]! @hasMany
     avatar: String
 }
